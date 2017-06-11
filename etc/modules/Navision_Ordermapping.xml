@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Navision_Ordermapping>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Navision_Ordermapping>
+    </modules>
+</config>

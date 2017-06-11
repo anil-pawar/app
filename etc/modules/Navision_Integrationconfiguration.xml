@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Navision_Integrationconfiguration>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Navision_Integrationconfiguration>
+    </modules>
+</config>

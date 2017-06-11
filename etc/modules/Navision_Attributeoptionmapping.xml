@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Navision_Attributeoptionmapping>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Navision_Attributeoptionmapping>
+    </modules>
+</config>

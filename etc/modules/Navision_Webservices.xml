@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Navision_Webservices>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Navision_Webservices>
+    </modules>
+</config>

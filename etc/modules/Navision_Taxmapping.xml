@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Navision_Taxmapping>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Navision_Taxmapping>
+    </modules>
+</config>

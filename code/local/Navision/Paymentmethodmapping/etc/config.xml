@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Navision_Paymentmethodmapping>
+            <version>1.0.0</version>
+        </Navision_Paymentmethodmapping>
+    </modules>
+     
+    <global>
+        <helpers>
+            <navision_paymentmethodmapping>
+                <!-- This is where we define our helper directory -->
+                <class>Navision_Paymentmethodmapping_Helper</class>
+            </navision_paymentmethodmapping>
+        </helpers>
+                    
+        <blocks>
+            <navision_paymentmethodmapping>
+                <!-- Set a block definition and lookup directory -->
+                <class>Navision_Paymentmethodmapping_Block</class>
+            </navision_paymentmethodmapping>
+        </blocks>
+         
+        <models>
+            <navision_paymentmethodmapping>
+                <!-- This is where we define our model directory -->
+                <class>Navision_Paymentmethodmapping_Model</class>
+                <!-- Define a resource to create a custom table -->
+                <resourceModel>navision_paymentmethodmapping_mysql4</resourceModel>
+            </navision_paymentmethodmapping>
+             
+            <!-- Here's our resource model we'll use to create a database table -->
+            <navision_paymentmethodmapping_mysql4>
+                <class>Navision_Paymentmethodmapping_Model_Mysql4</class>
+                <entities>
+                    <!-- Let's define our table, we'll call it with the baz name, but the real table is foo_bar_baz -->
+                    <!-- After we define our entity, we can call it with our model by calling foo_bar/baz -->
+                    <navisionpaymentmethodmapping>
+                        <table>navision_paymentmethodmapping_navpaymentmethodmapping</table>
+                    </navisionpaymentmethodmapping>
+                </entities>
+            </navision_paymentmethodmapping_mysql4>
+        </models>
+         
+        <!-- And finally we define our resource setup script -->
+        <resources>
+            <navision_paymentmethodmapping_setup>
+                <setup>
+                    <module>Navision_Paymentmethodmapping</module>
+                </setup>
+            </navision_paymentmethodmapping_setup>
+        </resources>
+    </global>
+     
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <!-- This is how we load our Adminhtml controllers -->
+                    <modules>
+                        <Navision_Paymentmethodmapping before="Mage_Adminhtml">Navision_Paymentmethodmapping_Adminhtml</Navision_Paymentmethodmapping>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+     
+    <adminhtml>
+        <layout>
+            <updates>
+                <navision_paymentmethodmapping>
+                    <!--
+                    We again keep a nice naming convention and make our module upgrade proof by placing it in a separate folder
+                    - Since we are in the adminhtml node, this will look for the XML file in the app/design/adminhtml/default/default root folder
+                    -->
+                    <file>navision/paymentmethodmapping.xml</file>
+                </navision_paymentmethodmapping>
+            </updates>
+        </layout>
+    </adminhtml>
+</config>

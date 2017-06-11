@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Navision_Deliverymethodmapping>
+            <version>1.0.0</version>
+        </Navision_Deliverymethodmapping>
+    </modules>
+     
+    <global>
+        <helpers>
+            <navision_deliverymethodmapping>
+                <!-- This is where we define our helper directory -->
+                <class>Navision_Deliverymethodmapping_Helper</class>
+            </navision_deliverymethodmapping>
+        </helpers>
+                    
+        <blocks>
+            <navision_deliverymethodmapping>
+                <!-- Set a block definition and lookup directory -->
+                <class>Navision_Deliverymethodmapping_Block</class>
+            </navision_deliverymethodmapping>
+        </blocks>
+         
+        <models>
+            <navision_deliverymethodmapping>
+                <!-- This is where we define our model directory -->
+                <class>Navision_Deliverymethodmapping_Model</class>
+                <!-- Define a resource to create a custom table -->
+                <resourceModel>navision_deliverymethodmapping_mysql4</resourceModel>
+            </navision_deliverymethodmapping>
+             
+            <!-- Here's our resource model we'll use to create a database table -->
+            <navision_deliverymethodmapping_mysql4>
+                <class>Navision_Deliverymethodmapping_Model_Mysql4</class>
+                <entities>
+                    <!-- Let's define our table, we'll call it with the baz name, but the real table is foo_bar_baz -->
+                    <!-- After we define our entity, we can call it with our model by calling foo_bar/baz -->
+                    <navisiondeliverymethodmapping>
+                        <table>navision_deliverymethodmapping_navdeliverymethodmapping</table>
+                    </navisiondeliverymethodmapping>
+                </entities>
+            </navision_deliverymethodmapping_mysql4>
+        </models>
+         
+        <!-- And finally we define our resource setup script -->
+        <resources>
+            <navision_deliverymethodmapping_setup>
+                <setup>
+                    <module>Navision_Deliverymethodmapping</module>
+                </setup>
+            </navision_deliverymethodmapping_setup>
+        </resources>
+    </global>
+     
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <!-- This is how we load our Adminhtml controllers -->
+                    <modules>
+                        <Navision_Deliverymethodmapping before="Mage_Adminhtml">Navision_Deliverymethodmapping_Adminhtml</Navision_Deliverymethodmapping>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+     
+    <adminhtml>
+        <layout>
+            <updates>
+                <navision_deliverymethodmapping>
+                    <!--
+                    We again keep a nice naming convention and make our module upgrade proof by placing it in a separate folder
+                    - Since we are in the adminhtml node, this will look for the XML file in the app/design/adminhtml/default/default root folder
+                    -->
+                    <file>navision/deliverymethodmapping.xml</file>
+                </navision_deliverymethodmapping>
+            </updates>
+        </layout>
+    </adminhtml>
+</config>

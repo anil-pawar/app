@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout>
+    <!-- Here, we reference the XML node path of our route -->
+    <adminhtml_navisionpaymentmethodmapping_index>
+        <reference name="content">
+            <!-- We also reference our block by namespacename_modulename/adminhtml_controllername, and name it uniquely -->
+            <block type="navision_paymentmethodmapping/adminhtml_navisionpaymentmethodmapping" name="navision_paymentmethodmapping_navisionpaymentmethodmapping" />
+        </reference>
+    </adminhtml_navisionpaymentmethodmapping_index>
+</layout>

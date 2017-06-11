@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Navision_Deliverymethodmapping>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Navision_Deliverymethodmapping>
+    </modules>
+</config>

@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Navision_Ordermapping>
+            <version>1.0.0</version>
+        </Navision_Ordermapping>
+    </modules>
+     
+    <global>
+        <helpers>
+            <navision_ordermapping>
+                <!-- This is where we define our helper directory -->
+                <class>Navision_Ordermapping_Helper</class>
+            </navision_ordermapping>
+        </helpers>
+                    
+        <blocks>
+            <navision_ordermapping>
+                <!-- Set a block definition and lookup directory -->
+                <class>Navision_Ordermapping_Block</class>
+            </navision_ordermapping>
+        </blocks>
+         
+        <models>
+            <navision_ordermapping>
+                <!-- This is where we define our model directory -->
+                <class>Navision_Ordermapping_Model</class>
+                <!-- Define a resource to create a custom table -->
+                <resourceModel>navision_ordermapping_mysql4</resourceModel>
+            </navision_ordermapping>
+             
+            <!-- Here's our resource model we'll use to create a database table -->
+            <navision_ordermapping_mysql4>
+                <class>Navision_Ordermapping_Model_Mysql4</class>
+                <entities>
+                    <!-- Let's define our table, we'll call it with the baz name, but the real table is foo_bar_baz -->
+                    <!-- After we define our entity, we can call it with our model by calling foo_bar/baz -->
+                    <navisionordermapping>
+                        <table>navision_ordermapping_navisionordermapping</table>
+                    </navisionordermapping>
+                </entities>
+            </navision_ordermapping_mysql4>
+        </models>
+         
+        <!-- And finally we define our resource setup script -->
+        <resources>
+            <navision_ordermapping_setup>
+                <setup>
+                    <module>Navision_Ordermapping</module>
+                </setup>
+            </navision_ordermapping_setup>
+        </resources>
+    </global>
+     
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <!-- This is how we load our Adminhtml controllers -->
+                    <modules>
+                        <Navision_Ordermapping before="Mage_Adminhtml">Navision_Ordermapping_Adminhtml</Navision_Ordermapping>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+     
+    <adminhtml>
+        <layout>
+            <updates>
+                <navision_ordermapping>
+                    <!--
+                    We again keep a nice naming convention and make our module upgrade proof by placing it in a separate folder
+                    - Since we are in the adminhtml node, this will look for the XML file in the app/design/adminhtml/default/default root folder
+                    -->
+                    <file>navision/ordermapping.xml</file>
+                </navision_ordermapping>
+            </updates>
+        </layout>
+    </adminhtml>
+</config>

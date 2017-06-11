@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Navision_Taxmapping>
+            <version>1.0.0</version>
+        </Navision_Taxmapping>
+    </modules>
+     
+    <global>
+        <helpers>
+            <navision_taxmapping>
+                <!-- This is where we define our helper directory -->
+                <class>Navision_Taxmapping_Helper</class>
+            </navision_taxmapping>
+        </helpers>
+                    
+        <blocks>
+            <navision_taxmapping>
+                <!-- Set a block definition and lookup directory -->
+                <class>Navision_Taxmapping_Block</class>
+            </navision_taxmapping>
+        </blocks>
+         
+        <models>
+            <navision_taxmapping>
+                <!-- This is where we define our model directory -->
+                <class>Navision_Taxmapping_Model</class>
+                <!-- Define a resource to create a custom table -->
+                <resourceModel>navision_taxmapping_mysql4</resourceModel>
+            </navision_taxmapping>
+             
+            <!-- Here's our resource model we'll use to create a database table -->
+            <navision_taxmapping_mysql4>
+                <class>Navision_Taxmapping_Model_Mysql4</class>
+                <entities>
+                    <!-- Let's define our table, we'll call it with the baz name, but the real table is foo_bar_baz -->
+                    <!-- After we define our entity, we can call it with our model by calling foo_bar/baz -->
+                    <navisiontaxmapping>
+                        <table>navision_taxmapping_navisiontaxmapping</table>
+                    </navisiontaxmapping>
+                </entities>
+            </navision_taxmapping_mysql4>
+        </models>
+         
+        <!-- And finally we define our resource setup script -->
+        <resources>
+            <navision_taxmapping_setup>
+                <setup>
+                    <module>Navision_Taxmapping</module>
+                </setup>
+            </navision_taxmapping_setup>
+        </resources>
+    </global>
+     
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <!-- This is how we load our Adminhtml controllers -->
+                    <modules>
+                        <Navision_Taxmapping before="Mage_Adminhtml">Navision_Taxmapping_Adminhtml</Navision_Taxmapping>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+     
+    <adminhtml>
+        <layout>
+            <updates>
+                <navision_taxmapping>
+                    <!--
+                    We again keep a nice naming convention and make our module upgrade proof by placing it in a separate folder
+                    - Since we are in the adminhtml node, this will look for the XML file in the app/design/adminhtml/default/default root folder
+                    -->
+                    <file>navision/taxmapping.xml</file>
+                </navision_taxmapping>
+            </updates>
+        </layout>
+    </adminhtml>
+</config>

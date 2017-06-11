@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout>
+    <!-- Here, we reference the XML node path of our route -->
+    <adminhtml_navisionintegrationauditlog_index>
+        <reference name="content">
+            <!-- We also reference our block by namespacename_modulename/adminhtml_controllername, and name it uniquely -->
+            <block type="navision_integrationauditlog/adminhtml_navisionintegrationauditlog" name="navision_integrationauditlog_navisionintegrationauditlog" />
+        </reference>
+    </adminhtml_navisionintegrationauditlog_index>
+</layout>

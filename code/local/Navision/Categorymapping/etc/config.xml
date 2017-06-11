@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Navision_Categorymapping>
+            <version>1.0.0</version>
+        </Navision_Categorymapping>
+    </modules>
+     
+    <global>
+        <helpers>
+            <navision_categorymapping>
+                <!-- This is where we define our helper directory -->
+                <class>Navision_Categorymapping_Helper</class>
+            </navision_categorymapping>
+        </helpers>
+                    
+        <blocks>
+            <navision_categorymapping>
+                <!-- Set a block definition and lookup directory -->
+                <class>Navision_Categorymapping_Block</class>
+            </navision_categorymapping>
+        </blocks>
+         
+        <models>
+            <navision_categorymapping>
+                <!-- This is where we define our model directory -->
+                <class>Navision_Categorymapping_Model</class>
+                <!-- Define a resource to create a custom table -->
+                <resourceModel>navision_categorymapping_mysql4</resourceModel>
+            </navision_categorymapping>
+             
+            <!-- Here's our resource model we'll use to create a database table -->
+            <navision_categorymapping_mysql4>
+                <class>Navision_Categorymapping_Model_Mysql4</class>
+                <entities>
+                    <!-- Let's define our table, we'll call it with the baz name, but the real table is foo_bar_baz -->
+                    <!-- After we define our entity, we can call it with our model by calling foo_bar/baz -->
+                    <navisioncategorymapping>
+                        <table>navision_categorymapping_navisioncategorymapping</table>
+                    </navisioncategorymapping>
+                </entities>
+            </navision_categorymapping_mysql4>
+        </models>
+         
+        <!-- And finally we define our resource setup script -->
+        <resources>
+            <navision_categorymapping_setup>
+                <setup>
+                    <module>Navision_Categorymapping</module>
+                </setup>
+            </navision_categorymapping_setup>
+        </resources>
+    </global>
+     
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <!-- This is how we load our Adminhtml controllers -->
+                    <modules>
+                        <Navision_Categorymapping before="Mage_Adminhtml">Navision_Categorymapping_Adminhtml</Navision_Categorymapping>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+     
+    <adminhtml>
+        <layout>
+            <updates>
+                <navision_categorymapping>
+                    <!--
+                    We again keep a nice naming convention and make our module upgrade proof by placing it in a separate folder
+                    - Since we are in the adminhtml node, this will look for the XML file in the app/design/adminhtml/default/default root folder
+                    -->
+                    <file>navision/categorymapping.xml</file>
+                </navision_categorymapping>
+            </updates>
+        </layout>
+    </adminhtml>
+</config>
